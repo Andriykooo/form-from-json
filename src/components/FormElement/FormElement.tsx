@@ -85,13 +85,15 @@ export const FormElement: FC<FormElementProps> = ({
         }
 
         if (element.type === "dropdown" && element?.options) {
+          const selectedKey =
+            element.value?.toString() || element.default_value?.toString();
+
           return (
             <Autocomplete
               {...field}
+              key={selectedKey}
               label="Select an option"
-              defaultSelectedKey={
-                element.value?.toString() || element.default_value?.toString()
-              }
+              defaultSelectedKey={selectedKey}
               isInvalid={isValid}
               errorMessage={errorMessage}
               onSelectionChange={field.onChange}
