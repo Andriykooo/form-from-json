@@ -2,16 +2,16 @@
 
 import { FC, useState } from "react";
 import { Editor } from "../Editor/Editor";
-import { initialFormData } from "@/app/utils/constants/initialFormData";
 import { useForm } from "react-hook-form";
 import { generateDefaultValues } from "@/app/utils/helpers/generateDefaultValues";
 import { FormElement } from "../FormElement/FormElement";
 import { Button, Code } from "@nextui-org/react";
 import { getFieldName } from "@/app/utils/helpers/getFieldName";
 import { FormElements } from "@/app/utils/types/formElements.type";
+import { initialFormElements } from "@/app/utils/constants/initialFormData";
 
 export const Form: FC = () => {
-  const [formElements, setFormElements] = useState(initialFormData);
+  const [formElements, setFormElements] = useState(initialFormElements);
 
   const {
     control,
@@ -20,7 +20,7 @@ export const Form: FC = () => {
     getValues,
     reset,
   } = useForm({
-    defaultValues: generateDefaultValues(initialFormData),
+    defaultValues: generateDefaultValues(initialFormElements),
   });
 
   const handleEditorChange = (editedData: FormElements[]) => {
