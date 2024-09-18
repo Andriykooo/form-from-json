@@ -1,6 +1,6 @@
-import { FormElements } from "../types/formElements.type";
+import { FormElementType } from "../types/formElement.type";
 
-export const initialFormElements: FormElements[] = [
+export const initialFormElements: FormElementType[] = [
   {
     default_value: "Some text...",
     value: "",

@@ -1,8 +1,8 @@
-import { FormElements } from "../types/formElements.type";
+import { FormElementType } from "../types/formElement.type";
 import { getFieldName } from "./getFieldName";
 
 export const generateDefaultValues = (
-  data: FormElements[]
+  data: FormElementType[]
 ): Record<string, string> => {
   const defaultValues: Record<string, string> = {};
 

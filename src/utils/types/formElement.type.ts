@@ -1,6 +1,6 @@
 type Value = string | number | boolean;
 
-export type FormElements = {
+export type FormElementType = {
   default_value?: Value;
   value?: Value;
   validation?: string;

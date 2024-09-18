@@ -3,32 +3,36 @@
 import { FC, useState } from "react";
 import { Editor } from "../Editor/Editor";
 import { useForm } from "react-hook-form";
-import { generateDefaultValues } from "@/app/utils/helpers/generateDefaultValues";
 import { FormElement } from "../FormElement/FormElement";
 import { Button, Code } from "@nextui-org/react";
-import { getFieldName } from "@/app/utils/helpers/getFieldName";
-import { FormElements } from "@/app/utils/types/formElements.type";
-import { initialFormElements } from "@/app/utils/constants/initialFormData";
+import { initialFormElements } from "@/utils/constants/initialFormData";
+import { FormElementType } from "@/utils/types/formElement.type";
+import { generateDefaultValues } from "@/utils/helpers/generateDefaultValues";
+import { getFieldName } from "@/utils/helpers/getFieldName";
 
 export const Form: FC = () => {
   const [formElements, setFormElements] = useState(initialFormElements);
+  const [formIsValid, setFormIsValid] = useState(false);
 
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitted },
+    formState: { errors },
     getValues,
     reset,
   } = useForm({
     defaultValues: generateDefaultValues(initialFormElements),
   });
 
-  const handleEditorChange = (editedData: FormElements[]) => {
+  const handleEditorChange = (editedData: FormElementType[]) => {
     reset(generateDefaultValues(editedData));
+    setFormIsValid(false);
     setFormElements(editedData);
   };
 
-  const onSubmit = handleSubmit(() => {});
+  const onSubmit = handleSubmit(() => {
+    setFormIsValid(true);
+  });
 
   return (
     <div className="flex flex-col md:flex-row gap-4">
@@ -54,7 +58,7 @@ export const Form: FC = () => {
             Submit
           </Button>
         </div>
-        {isSubmitted && (
+        {formIsValid && (
           <Code className="text-white overflow-auto">
             <pre>{JSON.stringify(getValues(), null, 2)}</pre>
           </Code>

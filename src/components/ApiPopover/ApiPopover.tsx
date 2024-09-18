@@ -1,4 +1,4 @@
-import { columns, rows } from "@/app/utils/constants/apiPopoverData";
+import { columns, rows } from "@/utils/constants/apiPopoverData";
 import {
   Button,
   getKeyValue,

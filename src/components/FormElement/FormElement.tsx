@@ -1,6 +1,6 @@
-import { isValidRegExpFormat } from "@/app/utils/helpers/isValidRegExpFormat";
-import { stringToRegExp } from "@/app/utils/helpers/stringToRegExp";
-import { FormElements } from "@/app/utils/types/formElements.type";
+import { isValidRegExpFormat } from "@/utils/helpers/isValidRegExpFormat";
+import { stringToRegExp } from "@/utils/helpers/stringToRegExp";
+import { FormElementType } from "@/utils/types/formElement.type";
 import {
   Autocomplete,
   AutocompleteItem,
@@ -12,7 +12,7 @@ import { Control, Controller, ErrorOption } from "react-hook-form";
 
 type FormElementProps = {
   name: string;
-  element: FormElements;
+  element: FormElementType;
   control: Control;
   error?: ErrorOption;
 };
